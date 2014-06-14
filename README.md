@@ -271,7 +271,7 @@ In `WEB-INF\isis.properties`, register the `WizardInterfaceFacetFactory` facet f
 
     isis.reflector.facets.include=com.danhaywood.isis.wicket.wizard.metamodel.WizardInterfaceFacetFactory
 
-There is no requirement to explicitly register the Wicket UI component (`WizardPropertiesPanelFactory`; it will be automatically discovered from the classpath.
+There is no requirement to explicitly register the Wicket UI component (`WizardPropertiesPanelFactory`); it will be automatically discovered from the classpath.
     
 ## Maven Configuration
 
@@ -341,23 +341,4 @@ In your project's webapp `pom.xml`, add a dependency on the `metamodel` and `ui`
 
 ### Dependencies
 
-    <dependencies>
-        <dependency>
-            <!-- ASL v2.0 -->
-            <groupId>org.apache.isis.viewer</groupId>
-            <artifactId>isis-viewer-wicket-ui</artifactId>
-            <version>${isis-viewer-wicket.version}</version>
-        </dependency>
-
-        <dependency>
-            <!-- ASL v2.0 -->
-            <!-- in turn, depends on: 
-                 * http://arshaw.com/fullcalendar/ (MIT License)
-                 * http://jquery.com (MIT License)  
-             -->
-            <groupId>net.ftlines.wicket-fullcalendar</groupId>
-            <artifactId>wicket-fullcalendar-core</artifactId>
-            <version>${wicket-fullcalendar.version}</version>
-        </dependency>
-    </dependencies>
-
+No third-party dependencies.
