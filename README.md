@@ -175,95 +175,95 @@ In the demo app, the `ToDoItemWizard` implements `Wizard` (by way of the `Abstra
     
 The `ToDoItemWizard.layout.json` file is also worth reviewing; it shows how the wizard's properties are organized into pages:
 
-  {
-    "columns": [
-      {
-        "span": 12,
-        "memberGroups": {
-          "What task do you need to do?": {
-            "members": {
-              "description": {
-                "typicalLength": {
-                  "value": 50
+    {
+      "columns": [
+        {
+          "span": 12,
+          "memberGroups": {
+            "What task do you need to do?": {
+              "members": {
+                "description": {
+                  "typicalLength": {
+                    "value": 50
+                  }
                 }
               }
-            }
-          },
-          "Is it similar to other todo items?": {
-            "members": {
-              "category": { },
-              "subcategory": { }
-            }
-          },
-          "Does it need to be done by a particular date?": {
-            "members": {
-              "dueBy": {
-                "typicalLength": {
-                  "value": 12
+            },
+            "Is it similar to other todo items?": {
+              "members": {
+                "category": { },
+                "subcategory": { }
+              }
+            },
+            "Does it need to be done by a particular date?": {
+              "members": {
+                "dueBy": {
+                  "typicalLength": {
+                    "value": 12
+                  }
                 }
               }
-            }
-          },
-          "Confirm details are correct": {
-            "members": {
-              "descriptionOnSummary": {
-                "named": {
-                  "value": "Description"
+            },
+            "Confirm details are correct": {
+              "members": {
+                "descriptionOnSummary": {
+                  "named": {
+                    "value": "Description"
+                  },
+                  "typicalLength": {
+                    "value": 50
+                  }
                 },
-                "typicalLength": {
-                  "value": 50
-                }
-              },
-              "categoryOnSummary": {
-                "named": {
-                  "value": "Category"
-                }
-              },
-              "subcategoryOnSummary": {
-                "named": {
-                  "value": "Subcategory"
-                }
-              },
-              "dueByOnSummary": {
-                "named": {
-                  "value": "Due by"
+                "categoryOnSummary": {
+                  "named": {
+                    "value": "Category"
+                  }
+                },
+                "subcategoryOnSummary": {
+                  "named": {
+                    "value": "Subcategory"
+                  }
+                },
+                "dueByOnSummary": {
+                  "named": {
+                    "value": "Due by"
+                  }
                 }
               }
             }
           }
+        },
+        {
+          "span": 0,
+          "memberGroups": {}
+        },
+        {
+          "span": 0,
+          "memberGroups": {}
+        },
+        {
+          "span": 12,
+          "collections": {}
         }
-      },
-      {
-        "span": 0,
-        "memberGroups": {}
-      },
-      {
-        "span": 0,
-        "memberGroups": {}
-      },
-      {
-        "span": 12,
-        "collections": {}
-      }
-    ],
-    "actions": {
-      "previous": {
-        "named": {
-          "value": "Previous"
-        }
-      },
-      "next": {
-        "named": {
-          "value": "Next"
-        }
-      },
-      "finish": {
-        "named": {
-          "value": "Finish"
+      ],
+      "actions": {
+        "previous": {
+          "named": {
+            "value": "Previous"
+          }
+        },
+        "next": {
+          "named": {
+            "value": "Next"
+          }
+        },
+        "finish": {
+          "named": {
+            "value": "Finish"
+          }
         }
       }
     }
-  }
 
 ## Isis Configuration
 
