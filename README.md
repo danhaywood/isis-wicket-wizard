@@ -1,33 +1,31 @@
-isis-wicket-wizard
-==================
+# isis-wicket-wizard #
 
-[![Build Status](https://travis-ci.org/danhaywood/isis-wicket-wizard.png?branch=master)](https://travis-ci.org/danhaywood/isis-wicket-wizard)
+[![Build Status](https://travis-ci.org/isisaddons/isis-wicket-wizard.png?branch=master)](https://travis-ci.org/isisaddons/isis-wicket-wizard)
 
-(Requires [Apache Isis](http://isis.apache.org) `1.6.0-SNAPSHOT` or later).
-
-Extension for Apache Isis' Wicket Viewer, to support an wizard with next, previous, finish and cancel actions.
+This component, intended for use with [Apache Isis](http://isis.apache.org)'s Wicket viewer, provides a simple wizard 
+with next, previous, finish and cancel actions.
 
 ## Screenshots
 
-The following screenshots are taken from the `zzzdemo` app (adapted from Isis' quickstart archetype).  See below for further details.
+The following screenshots show an example app's usage of the component.
 
-![](https://raw.github.com/danhaywood/isis-wicket-wizard/master/images/page1.png)
+![](https://raw.github.com/isisaddons/isis-wicket-wizard/master/images/page1.png)
 
-![](https://raw.github.com/danhaywood/isis-wicket-wizard/master/images/page2.png)
+![](https://raw.github.com/isisaddons/isis-wicket-wizard/master/images/page2.png)
 
-![](https://raw.github.com/danhaywood/isis-wicket-wizard/master/images/page3.png)
+![](https://raw.github.com/isisaddons/isis-wicket-wizard/master/images/page3.png)
 
-![](https://raw.github.com/danhaywood/isis-wicket-wizard/master/images/page4.png)
+![](https://raw.github.com/isisaddons/isis-wicket-wizard/master/images/page4.png)
 
 Or, the "update category" action can be used to create a slightly different flow:
 
-![](https://raw.github.com/danhaywood/isis-wicket-wizard/master/images/page5.png)
+![](https://raw.github.com/isisaddons/isis-wicket-wizard/master/images/page5.png)
 
-![](https://raw.github.com/danhaywood/isis-wicket-wizard/master/images/page6.png)
+![](https://raw.github.com/isisaddons/isis-wicket-wizard/master/images/page6.png)
 
-![](https://raw.github.com/danhaywood/isis-wicket-wizard/master/images/page7.png)
+![](https://raw.github.com/isisaddons/isis-wicket-wizard/master/images/page7.png)
 
-## API & Usage
+## API & Usage ##
 
 The wizard implements an `Wizard` interface that is itself extends from `ViewModel.Cloneable` interface:
 
@@ -265,64 +263,87 @@ The `ToDoItemWizard.layout.json` file is also worth reviewing; it shows how the 
       }
     }
 
-## Isis Configuration
+## How to configure/use ##
+
+You can either use this component "out-of-the-box", or you can fork this repo and extend to your own requirements. 
+
+To use "out-of-the-box", first add this component to your classpath:
+
+* in your project's parent module's `pom.xml`, add to the `<dependencyManagement>` section:
+
+<pre>
+    &lt;dependencyManagement&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.isisaddons.wicket.wizard&lt;/groupId&gt;
+            &lt;artifactId&gt;isis-wicket-wizard-cpt&lt;/artifactId&gt;
+            &lt;version&gt;1.6.0&lt;/version&gt;
+            &lt;type&gt;pom&lt;/type&gt;
+            &lt;scope&gt;import&lt;/scope&gt;
+        &lt;/dependency&gt;
+        ....
+    &lt;/dependencyManagement&gt;
+</pre>
+
+* in your project's `dom` module's `pom.xml`, add a dependency on the `applib` module:
+
+<pre>
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.isisaddons.wicket.wizard&lt;/groupId&gt;
+        &lt;artifactId&gt;isis-wicket-wizard-cpt-applib&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+</pre>
+
+
+* in your project's `webapp` module's `pom.xml`, add a dependency on the `metamodel` and `ui` modules:
+
+<pre>
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.isisaddons.wicket.wizard&lt;/groupId&gt;
+        &lt;artifactId&gt;isis-wicket-wizard-cpt-metamodel&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.isisaddons.wicket.wizard&lt;/groupId&gt;
+        &lt;artifactId&gt;isis-wicket-wizard-cpt-ui&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+</pre>
+
+Notes:
+* check for later releases by searching [Maven Central Repo](http://search.maven.org/#search|ga|1|isis-wicket-wizard-cpt).
+
 
 In `WEB-INF\isis.properties`, register the `WizardInterfaceFacetFactory` facet factory:
 
-    isis.reflector.facets.include=com.danhaywood.isis.wicket.wizard.metamodel.WizardInterfaceFacetFactory
+<pre>
+    isis.reflector.facets.include=...,\
+            org.isisaddons.wicket.wizard.metamodel.WizardInterfaceFacetFactory
+</pre>
 
 There is no requirement to explicitly register the Wicket UI component (`WizardPropertiesPanelFactory`); it will be automatically discovered from the classpath.
+
+
+
+If instead you want to extend this component's functionality, then we recommend that you fork this repo.  The repo is 
+structured as follows:
+
+* `pom.xml      ` - parent pom
+* `cpt          ` - the component' own parent pom
+* `    applib   ` - the component's API (to reference from `dom` project)
+* `    metamodel` - the component's extensions to the Isis metamodel
+* `    ui       ` - the component's UI implementation
+* `fixture      ` - fixtures, holding a sample domain objects and fixture scripts
+* `webapp       ` - demo webapp (see above screenshots); depends on `ext` and `fixture`
+* `webapptests  ` - UI tests for the component; depends on `webapp`
+
+Only the `cpt` project (and its submodules) is released to Maven central.  The versions of the other modules 
+are purposely left at `0.0.1-SNAPSHOT` because they are not intended to be released.
+
+
+
+
     
-## Maven Configuration
+## Legal Stuff ##
 
-In your project's parent `pom.xml`, add to the `<dependencyManagement>` section:
-
-    <dependencyManagement>
-        <dependencies>
-            ...
-            <dependency>
-                <groupId>com.danhaywood.isis.wicket</groupId>
-                <artifactId>danhaywood-isis-wicket-wizard</artifactId>
-                <version>x.y.z</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            ...
-        </dependencies>
-    </dependencyManagement>
-
-where `x.y.z` is the latest available version (search the [Maven Central Repo](http://search.maven.org/#search|ga|1|isis-wicket-wizard)).
-
-In your project's DOM `pom.xml`, add a dependency on the `applib` module:
-
-    <dependencies>
-        ...
-        <dependency>
-            <groupId>com.danhaywood.isis.wicket</groupId>
-            <artifactId>danhaywood-isis-wicket-wizard-applib</artifactId>
-        </dependency>
-        ...
-    </dependencies> 
-
-In your project's webapp `pom.xml`, add a dependency on the `metamodel` and `ui` modules:
-
-    <dependencies>
-        ...
-        <dependency>
-            <groupId>com.danhaywood.isis.wicket</groupId>
-            <artifactId>danhaywood-isis-wicket-wizard-metamodel</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.danhaywood.isis.wicket</groupId>
-            <artifactId>danhaywood-isis-wicket-wizard-ui</artifactId>
-        </dependency>
-        ...
-    </dependencies> 
-
-## Legal Stuff
-
-### License
+#### License  ####
 
     Copyright 2014 Dan Haywood
 
@@ -339,6 +360,59 @@ In your project's webapp `pom.xml`, add a dependency on the `metamodel` and `ui`
     specific language governing permissions and limitations
     under the License.
 
-### Dependencies
+#### Dependencies ####
 
-No third-party dependencies.
+Other than Apache Isis, this component has no third-party dependencies.
+
+##  Maven deploy notes ##
+
+Only the `dom` module is deployed, and is done so using Sonatype's OSS support (see 
+[user guide](http://central.sonatype.org/pages/apache-maven.html)).
+
+#### Release to Sonatype's Snapshot Repo ####
+
+To deploy a snapshot, use:
+
+    pushd cpt
+    mvn clean deploy
+    popd
+
+The artifacts should be available in Sonatype's 
+[Snapshot Repo](https://oss.sonatype.org/content/repositories/snapshots).
+
+#### Release to Maven Central ####
+
+The `release.sh` script automates the release process.  It performs the following:
+
+* performs a sanity check (`mvn clean install -o`) that everything builds ok
+* bumps the `pom.xml` to a specified release version, and tag
+* performs a double check (`mvn clean install -o`) that everything still builds ok
+* releases the code using `mvn clean deploy`
+* bumps the `pom.xml` to a specified release version
+
+For example:
+
+    sh release.sh 1.6.0 \
+                  1.6.1-SNAPSHOT \
+                  dan@haywood-associates.co.uk \
+                  "this is not really my passphrase"
+    
+where
+* `$1` is the release version
+* `$2` is the snapshot version
+* `$3` is the email of the secret key (`~/.gnupg/secring.gpg`) to use for signing
+* `$4` is the corresponding passphrase for that secret key.
+
+Other ways of specifying the key and passphrase are available, see the `pgp-maven-plugin`'s 
+[documentation](http://kohsuke.org/pgp-maven-plugin/secretkey.html)).
+
+If the script completes successfully, then push changes:
+
+    git push
+
+If the script fails to complete, then identify the cause, perform a `git reset --hard` to start over and fix the issue
+before trying again.  Note that in the `cpt`'s `pom.xml` the `nexus-staging-maven-plugin` has the 
+`autoReleaseAfterClose` setting set to `true` (to automatically stage, close and the release the repo).  You may want
+to set this to `false` if debugging an issue.
+ 
+According to Sonatype's guide, it takes about 10 minutes to sync, but up to 2 hours to update [search](http://search.maven.org).
