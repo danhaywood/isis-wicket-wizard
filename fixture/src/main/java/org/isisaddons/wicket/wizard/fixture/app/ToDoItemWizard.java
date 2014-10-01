@@ -18,7 +18,7 @@
  */
 package org.isisaddons.wicket.wizard.fixture.app;
 
-import com.danhaywood.isis.wicket.wizard.applib.AbstractWizard;
+import org.isisaddons.wicket.wizard.cpt.applib.AbstractWizard;
 import com.google.common.base.Strings;
 import org.isisaddons.wicket.wizard.fixture.dom.Categorized;
 import org.isisaddons.wicket.wizard.fixture.dom.WizardWicketToDoItem;
