@@ -1,5 +1,7 @@
 # isis-wicket-wizard #
 
+*THIS COMPONENT IS STILL WORK-IN-PROGRESS, HAS NOT YET BEEN RELEASED*
+
 [![Build Status](https://travis-ci.org/isisaddons/isis-wicket-wizard.png?branch=master)](https://travis-ci.org/isisaddons/isis-wicket-wizard)
 
 This component, intended for use with [Apache Isis](http://isis.apache.org)'s Wicket viewer, provides a simple wizard 
@@ -267,48 +269,17 @@ The `ToDoItemWizard.layout.json` file is also worth reviewing; it shows how the 
 
 You can either use this component "out-of-the-box", or you can fork this repo and extend to your own requirements. 
 
-To use "out-of-the-box", first add this component to your classpath:
-
-* in your project's parent module's `pom.xml`, add to the `<dependencyManagement>` section:
+To use "out-of-the-box", add this component to your project's `dom` module's `pom.xml`:
 
 <pre>
-    &lt;dependencyManagement&gt;
         &lt;dependency&gt;
             &lt;groupId&gt;org.isisaddons.wicket.wizard&lt;/groupId&gt;
             &lt;artifactId&gt;isis-wicket-wizard-cpt&lt;/artifactId&gt;
             &lt;version&gt;1.6.0&lt;/version&gt;
-            &lt;type&gt;pom&lt;/type&gt;
-            &lt;scope&gt;import&lt;/scope&gt;
         &lt;/dependency&gt;
-        ....
-    &lt;/dependencyManagement&gt;
 </pre>
 
-* in your project's `dom` module's `pom.xml`, add a dependency on the `applib` module:
-
-<pre>
-    &lt;dependency&gt;
-        &lt;groupId&gt;org.isisaddons.wicket.wizard&lt;/groupId&gt;
-        &lt;artifactId&gt;isis-wicket-wizard-cpt-applib&lt;/artifactId&gt;
-    &lt;/dependency&gt;
-</pre>
-
-
-* in your project's `webapp` module's `pom.xml`, add a dependency on the `metamodel` and `ui` modules:
-
-<pre>
-    &lt;dependency&gt;
-        &lt;groupId&gt;org.isisaddons.wicket.wizard&lt;/groupId&gt;
-        &lt;artifactId&gt;isis-wicket-wizard-cpt-metamodel&lt;/artifactId&gt;
-    &lt;/dependency&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;org.isisaddons.wicket.wizard&lt;/groupId&gt;
-        &lt;artifactId&gt;isis-wicket-wizard-cpt-ui&lt;/artifactId&gt;
-    &lt;/dependency&gt;
-</pre>
-
-Notes:
-* check for later releases by searching [Maven Central Repo](http://search.maven.org/#search|ga|1|isis-wicket-wizard-cpt).
+Check for later releases by searching [Maven Central Repo](http://search.maven.org/#search|ga|1|isis-wicket-wizard-cpt).
 
 
 In `WEB-INF\isis.properties`, register the `WizardInterfaceFacetFactory` facet factory:
@@ -327,18 +298,16 @@ structured as follows:
 
 * `pom.xml      ` - parent pom
 * `cpt          ` - the component' own parent pom
-* `    applib   ` - the component's API (to reference from `dom` project)
-* `    metamodel` - the component's extensions to the Isis metamodel
-* `    ui       ` - the component's UI implementation
 * `fixture      ` - fixtures, holding a sample domain objects and fixture scripts
 * `webapp       ` - demo webapp (see above screenshots); depends on `ext` and `fixture`
-* `webapptests  ` - UI tests for the component; depends on `webapp`
 
 Only the `cpt` project (and its submodules) is released to Maven central.  The versions of the other modules 
 are purposely left at `0.0.1-SNAPSHOT` because they are not intended to be released.
 
 
+## Change Log ##
 
+* `x.x.x` - ... not yet released ...
 
     
 ## Legal Stuff ##

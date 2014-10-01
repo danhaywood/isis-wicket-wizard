@@ -1,9 +1,7 @@
 /*
- *  Licensed to the Apache Software Foundation (ASF) under one
- *  or more contributor license agreements.  See the NOTICE file
- *  distributed with this work for additional information
- *  regarding copyright ownership.  The ASF licenses this file
- *  to you under the Apache License, Version 2.0 (the
+ *  Copyright 2014 Dan Haywood
+ *
+ *  Licensed under the Apache License, Version 2.0 (the
  *  "License"); you may not use this file except in compliance
  *  with the License.  You may obtain a copy of the License at
  *
@@ -18,8 +16,8 @@
  */
 package org.isisaddons.wicket.wizard.fixture.app;
 
-import org.isisaddons.wicket.wizard.cpt.applib.AbstractWizard;
 import com.google.common.base.Strings;
+import org.isisaddons.wicket.wizard.cpt.applib.AbstractWizard;
 import org.isisaddons.wicket.wizard.fixture.dom.Categorized;
 import org.isisaddons.wicket.wizard.fixture.dom.WizardWicketToDoItem;
 import org.isisaddons.wicket.wizard.fixture.dom.WizardWicketToDoItem.Category;
@@ -200,7 +198,7 @@ public class ToDoItemWizard
     }
     //endregion
 
-    //region > summary propertyies
+    //region > summary properties
 
     public String getDescriptionOnSummary() {
         return getDescription();
