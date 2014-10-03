@@ -11,9 +11,9 @@ echo "editing parent's pom.xml (reference to dom module)"
 cat pom.xml | sed "s/<isis-wicket-wizard.version>.*</<isis-wicket-wizard.version>$VERSION</" > pom.xml.$$.sed
 mv pom.xml.$$.sed pom.xml
 
-# edit dom's pom.xml
+# edit cpt's pom.xml
 echo "editing dom's pom.xml"
-pushd dom >/dev/null
+pushd cpt >/dev/null
 mvn versions:set -DnewVersion=$VERSION > /dev/null
 popd >/dev/null
 
