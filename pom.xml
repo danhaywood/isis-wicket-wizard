@@ -30,8 +30,8 @@
     </prerequisites>
 
 	<properties>
-        <isis.version>1.6.0</isis.version>
-        <isis-viewer-wicket.version>1.6.0</isis-viewer-wicket.version>
+        <isis.version>1.7.0-SNAPSHOT</isis.version>
+        <isis-viewer-wicket.version>1.7.0-SNAPSHOT</isis-viewer-wicket.version>
 		<isis-wicket-wizard.version>1.6.0-SNAPSHOT</isis-wicket-wizard.version>
 
 
