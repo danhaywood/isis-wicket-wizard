@@ -289,6 +289,8 @@ Then log on using user: `sven`, password: `pass`
 
 You can either use this component "out-of-the-box", or you can fork this repo and extend to your own requirements. 
 
+#### "Out-of-the-box" ####
+
 To use "out-of-the-box", add this component to your project's `dom` module's `pom.xml`:
 
 <pre>
@@ -311,6 +313,42 @@ In `WEB-INF\isis.properties`, register the `WizardInterfaceFacetFactory` facet f
 
 There is no requirement to explicitly register the Wicket UI component (`WizardPropertiesPanelFactory`); it will be automatically discovered from the classpath.
 
+
+#### "Out-of-the-box" (-SNAPSHOT) ####
+
+If you want to use the current `-SNAPSHOT`, then the steps are the same as above, except:
+
+* when updating the classpath, specify the appropriate -SNAPSHOT version:
+
+<pre>
+    &lt;version&gt;1.8.0-SNAPSHOT&lt;/version&gt;
+</pre>
+
+* add the repository definition to pick up the most recent snapshot (we use the Cloudbees continuous integration service).  We suggest defining the repository in a `<profile>`:
+
+<pre>
+    &lt;profile&gt;
+        &lt;id&gt;cloudbees-snapshots&lt;/id&gt;
+        &lt;activation&gt;
+            &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;
+        &lt;/activation&gt;
+        &lt;repositories&gt;
+            &lt;repository&gt;
+                &lt;id&gt;snapshots-repo&lt;/id&gt;
+                &lt;url&gt;http://repository-estatio.forge.cloudbees.com/snapshot/&lt;/url&gt;
+                &lt;releases&gt;
+                    &lt;enabled&gt;false&lt;/enabled&gt;
+                &lt;/releases&gt;
+                &lt;snapshots&gt;
+                    &lt;enabled&gt;true&lt;/enabled&gt;
+                &lt;/snapshots&gt;
+            &lt;/repository&gt;
+        &lt;/repositories&gt;
+    &lt;/profile&gt;
+</pre>
+
+
+#### Forking the repo ####
 
 
 If instead you want to extend this component's functionality, then we recommend that you fork this repo.  The repo is 
@@ -381,8 +419,8 @@ The `release.sh` script automates the release process.  It performs the followin
 
 For example:
 
-    sh release.sh 1.6.0 \
-                  1.6.1-SNAPSHOT \
+    sh release.sh 1.8.0 \
+                  1.9.0-SNAPSHOT \
                   dan@haywood-associates.co.uk \
                   "this is not really my passphrase"
     
