@@ -21,7 +21,7 @@ import java.util.List;
 import org.isisaddons.wicket.wizard.cpt.applib.Wizard;
 import org.apache.isis.core.metamodel.facetapi.FacetHolder;
 import org.apache.isis.core.metamodel.facets.ImperativeFacet;
-import org.apache.isis.core.metamodel.facets.actions.interaction.ActionInvocationFacet;
+import org.apache.isis.core.metamodel.facets.actions.action.invocation.ActionInvocationFacet;
 import org.apache.isis.core.metamodel.spec.feature.ObjectAction;
 
 public class WizardFacetForInterface extends WizardFacetAbstract {
