@@ -32,6 +32,7 @@ import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.isis.applib.annotation.MemberGroupLayout.ColumnSpans;
 import org.apache.isis.applib.annotation.Where;
 import org.apache.isis.applib.filter.Filter;
@@ -395,7 +396,7 @@ public class WizardPropertiesForm extends FormAbstract<ObjectAdapter> {
                 }
 
                 // ... else go to the home page
-                return new HomePage();
+                return new HomePage(new PageParameters());
             }
 
             private List<EntityModel> getBreadcrumbs() {
