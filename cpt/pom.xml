@@ -54,9 +54,8 @@
         <compileSource>1.7</compileSource>
         <compileTarget>1.7</compileTarget>
 
-        <isis.version>1.8.0-SNAPSHOT</isis.version>
-        <isis-viewer-wicket.version>1.8.0-SNAPSHOT</isis-viewer-wicket.version>
-
+        <isis.version>1.8.0</isis.version>
+ 
         <datanucleus-maven-plugin.version>3.3.2</datanucleus-maven-plugin.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -248,7 +247,7 @@
         <dependency>
             <groupId>org.apache.isis.viewer</groupId>
             <artifactId>isis-viewer-wicket-ui</artifactId>
-            <version>${isis-viewer-wicket.version}</version>
+            <version>${isis.version}</version>
             <optional>true</optional>
         </dependency>
         <dependency>
