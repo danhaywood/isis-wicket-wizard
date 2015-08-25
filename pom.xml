@@ -62,6 +62,41 @@
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>1.3.1</version>
+                    <configuration>
+                        <rules>
+                            <requireMavenVersion>
+                                <version>[3.0.5,)</version>
+                            </requireMavenVersion>
+                            <requireJavaVersion>
+                                <version>[1.8.0,)</version>
+                            </requireJavaVersion>
+                            <requirePluginVersions>
+                                <message>All plugin versions must be
+                                    defined!</message>
+                                <banLatest>true</banLatest>
+                                <banRelease>true</banRelease>
+                            </requirePluginVersions>
+                            <!--
+                            RELAXED!
+                            <DependencyConvergence />
+                            -->
+                        </rules>
+                    </configuration>
+                    <!-- goal:enforce supposedly binds to phase:validate, but explicit binding seems to be required -->
+                    <executions>
+                        <execution>
+                            <id>validate-enforce</id>
+                            <phase>validate</phase>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.1</version>
                     <configuration>
@@ -98,7 +133,7 @@
                         </excludes>
                         <useFile>true</useFile>
                         <printSummary>true</printSummary>
-                        <outputDirectory>${project.build.directory}/surefire-reports</outputDirectory>
+                        <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
                     </configuration>
                 </plugin>
 
@@ -107,17 +142,6 @@
                     <artifactId>maven-surefire-report-plugin</artifactId>
                     <version>2.16</version>
                     <configuration>
-                        <includes>
-                            <include>**/*Test.java</include>
-                            <include>**/*Test$*.java</include>
-                            <include>**/*Test_*.java</include>
-                            <include>**/*Spec*.java</include>
-                        </includes>
-                        <excludes>
-                            <exclude>**/Test*.java</exclude>
-                            <exclude>**/*ForTesting.java</exclude>
-                            <exclude>**/*Abstract*.java</exclude>
-                        </excludes>
                         <showSuccess>false</showSuccess>
                     </configuration>
                     <executions>
