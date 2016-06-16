@@ -275,7 +275,7 @@ The prerequisite software is:
 
 To build the demo app:
 
-    git clone https://github.com/isisaddons/isis-module-wizard.git
+    git clone https://github.com/isisaddons/isis-wicket-wizard.git
     mvn clean install
 
 To run the demo app:
